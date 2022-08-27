@@ -3,13 +3,13 @@
 #include <assert.h>
 #include <errno.h>
 #include "asserts.h"
-#include <mem.h>
+#include <string.h>
 #include "file_read.h"
 
 int getFileSize( FILE* file){
     assert_ret_err(file != nullptr, 0, EFAULT);
-    fseek (file, 0, SEEK_END);;
-    int file_size = ftell(file)+1;
+    fseek(file, 0, SEEK_END);
+    int file_size = ftell(file) + 1;
     rewind(file);
     return file_size;
 }
@@ -18,7 +18,7 @@ String readFile( FILE* file) {
     assert_ret_err(file != nullptr, ((String){nullptr, 0}), EFAULT);
 
     int file_size = getFileSize(file);
-    char*  file_content = (char*)calloc ((file_size + 1), sizeof(char));
+    char* file_content = (char*)calloc((file_size + 1), sizeof(char));
     assert_ret(file_content != nullptr, ((String){nullptr, 0}));
     int fread_val = fread( file_content, sizeof(char), file_size, file);
     if (errno != 0){

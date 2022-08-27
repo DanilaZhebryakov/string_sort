@@ -13,7 +13,7 @@ int Strcmpe(const String* a, const String* b){
     const char* a_ptr = a->chars + a->length;
     const char* b_ptr = b->chars + b->length;
     while(*a_ptr == *b_ptr && a_ptr >= a->chars && b_ptr >= b->chars){
-        a_ptr--;b_ptr--;
+        a_ptr--; b_ptr--;
     }
     if(a_ptr < a->chars){
         if(b_ptr < b->chars){

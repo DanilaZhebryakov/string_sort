@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,8 +21,10 @@ int main(int argc,const char* argv[]) {
         filename = argv[arg_filename + 1];
     }
 
-    bool inv = parseArg(argc, argv, "--invert-sorting") != ARG_NOT_FOUND;
-    bool rtl = parseArg(argc, argv, "--rtl-sorting"   ) != ARG_NOT_FOUND;
+    bool inv              = parseArg(argc, argv, "--invert-sorting"          ) != ARG_NOT_FOUND;
+    bool rtl              = parseArg(argc, argv, "--rtl-sorting"             ) != ARG_NOT_FOUND;
+    bool shakespeare_mode = parseArg(argc, argv, "--shakespeare-mode"        ) != ARG_NOT_FOUND;
+    bool remove_l_spaces  = parseArg(argc, argv, "--remove-leading-spaces"   ) != ARG_NOT_FOUND;
 
     int (*comparators[2][2])(const void*,const void*) =
     {{sort_cmp_norm, sort_cmp_rtl },
@@ -51,17 +54,19 @@ int main(int argc,const char* argv[]) {
 
     fclose(input);
     for (int i = 0; i < line_count; i++){
-        if(*(lines[i].chars) != ' '){
+        if(*(lines[i].chars) != ' ' && shakespeare_mode){
             *(lines[i].chars) = '\0';
-              lines[i].length = 0;
+            lines[i].length = 0;
         }
+
+        if(remove_l_spaces)
         lstrip(&lines[i], ' ');
-        if(isEnterExit(lines[i].chars)){
+
+        if(isEnterExit(lines[i].chars) && shakespeare_mode){
             *(lines[i].chars) = '\0';
-              lines[i].length = 0;
+            lines[i].length = 0;
         }
     }
-
 
     msort(lines, line_count, sizeof(String), comparators[inv][rtl]);
 
@@ -85,5 +90,6 @@ int parseArg(int argc, const char* argv[], const char* arg_to_find){
 }
 
 bool isEnterExit(const char* a){
+    while((*a) == ' ') a++;
     return ((strncmp(a,"Enter",5) == 0) || (strncmp(a,"Exit",4) == 0) || (strncmp(a,"Exeunt",6) == 0) ||  (strncmp(a,"Re-enter",8) == 0));
 }
