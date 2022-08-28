@@ -1,3 +1,4 @@
+//! @file file_read.h
 #ifndef FILE_READ_H_INCLUDED
 #define FILE_READ_H_INCLUDED
 #include "String.h"
@@ -6,6 +7,7 @@
 //! @param [in] file input file
 //! @return size
 //! @note returns 0 in case of error
+//! @note works incorrectly in some OSs because of different text format
 int getFileSize( FILE* file);
 
 //! reads file as string

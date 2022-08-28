@@ -40,6 +40,17 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="msort.cpp" />
 		<Unit filename="msort.h" />
-		<Extensions />
+		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="1" line="0" />
+				<doxyfile_project project_number="1.0.0" output_directory="docs" />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_preprocessor enable_preprocessing="0" />
+				<doxyfile_dot />
+				<general use_at_in_tags="1" />
+			</DoxyBlocks>
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

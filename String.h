@@ -1,3 +1,6 @@
+//! @file String.h
+//! contains String struct and some helper functions
+
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
 

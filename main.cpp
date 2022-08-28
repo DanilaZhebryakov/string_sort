@@ -71,8 +71,12 @@ int main(int argc,const char* argv[]) {
     msort(lines, line_count, sizeof(String), comparators[inv][rtl]);
 
     for (int i = 0; i < line_count; i++) {
-        if(lines[i].length != 0)
-        printf("%s\n", lines[i].chars);
+        if (lines[i].length != 0){
+            for(int j = 0;j < lines[i].length;j++){
+                printf("%d ", (lines[i].chars)[j]);
+            }
+            printf("\n");
+        }
     }
 
     free(file_content.chars);
