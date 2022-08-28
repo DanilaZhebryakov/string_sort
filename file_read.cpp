@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <errno.h>
-#include "asserts.h"
 #include <string.h>
+
 #include "file_read.h"
+#include "asserts.h"
 
 int getFileSize( FILE* file){
     assert_ret_err(file != nullptr, 0, EFAULT);

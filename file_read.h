@@ -1,6 +1,7 @@
 //! @file file_read.h
 #ifndef FILE_READ_H_INCLUDED
 #define FILE_READ_H_INCLUDED
+
 #include "String.h"
 
 //! gets size of file (number of characters in it)

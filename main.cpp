@@ -1,9 +1,9 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include <assert.h>
+
 #include "file_read.h"
 #include "msort.h"
 #include "main.h"
@@ -12,6 +12,16 @@ int sort_cmp_norm( const void* ap, const void* bp) { sortComp( Strcmp  ) }
 int sort_cmp_rtl ( const void* ap, const void* bp) { sortComp( Strcmpe ) }
 int sort_cmp_inv ( const void* ap, const void* bp) { sortComp(-Strcmp  ) }
 int sort_cmp_irtl( const void* ap, const void* bp) { sortComp(-Strcmpe ) }
+
+char* help_string =
+"Reads all lines from input file, sorts them and puts to standard output\n"
+"Options: \n"
+"-file [filename]        : used to specify input file. Default name is \"input.txt\" \n"
+"--invert-sorting        : inverts sorting order. \n"
+"--rtl-sorting           : compares lines right-to-left instead of left-to-right. (makes last characters most significant in sorting) \n"
+"--remove-leading-spaces : removes all leading spaces from lines. \n"
+"--shakespeare-mode      : removes lines NOT startig with ' '; removes all lines starting with \"Enter\", \"Exit\", \"Re-enter\" and \"Exeunt\"; Works best with --remove-leading-spaces; Was created to support format of \"Hamlet\" \n"
+"--help                  : display this text\n";
 
 int main(int argc,const char* argv[]) {
     const char* filename = "input.txt";
@@ -25,6 +35,11 @@ int main(int argc,const char* argv[]) {
     bool rtl              = parseArg(argc, argv, "--rtl-sorting"             ) != ARG_NOT_FOUND;
     bool shakespeare_mode = parseArg(argc, argv, "--shakespeare-mode"        ) != ARG_NOT_FOUND;
     bool remove_l_spaces  = parseArg(argc, argv, "--remove-leading-spaces"   ) != ARG_NOT_FOUND;
+
+    if(parseArg(argc,argv,"--help") != ARG_NOT_FOUND){
+        printf(help_string);
+        return 0;
+    }
 
     int (*comparators[2][2])(const void*,const void*) =
     {{sort_cmp_norm, sort_cmp_rtl },

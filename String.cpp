@@ -1,9 +1,10 @@
-#include "String.h"
-#include "asserts.h"
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include "String.h"
+#include "asserts.h"
 
 int Strcmp(const String* a, const String* b){
     return strcmp(a->chars, b->chars);

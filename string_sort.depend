@@ -30,27 +30,27 @@
 
 1661512961 c:\users\danila\desktop\string_sort\asserts.h
 
-1661684506 c:\users\danila\desktop\string_sort\file_read.h
+1661686495 c:\users\danila\desktop\string_sort\file_read.h
 	"String.h"
 
-1661600993 source:c:\users\danila\desktop\string_sort\file_read.cpp
+1661686499 source:c:\users\danila\desktop\string_sort\file_read.cpp
 	<stdio.h>
 	<stdlib.h>
 	<assert.h>
 	<errno.h>
-	"asserts.h"
 	<string.h>
 	"file_read.h"
+	"asserts.h"
 
 1661684243 c:\users\danila\desktop\string_sort\string.h
 
-1661599549 source:c:\users\danila\desktop\string_sort\string.cpp
-	"String.h"
-	"asserts.h"
+1661686499 source:c:\users\danila\desktop\string_sort\string.cpp
 	<stdio.h>
 	<errno.h>
 	<string.h>
 	<stdlib.h>
+	"String.h"
+	"asserts.h"
 
 1661595983 c:\users\danila\desktop\string_sort\main.h
 
