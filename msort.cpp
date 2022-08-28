@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <stdint.h>
 
-static void msort_( void* m, int elcnt,int elsize,int (*cmp)(const void*,const void*),uint8_t* buffer) {
+static void msort_( void* m, int elcnt, int elsize, int (*cmp)(const void*, const void*), uint8_t* buffer) {
     if (elcnt == 1) {
         return;
     }
@@ -28,12 +28,12 @@ static void msort_( void* m, int elcnt,int elsize,int (*cmp)(const void*,const v
         }
         buffer_ptr += elsize;
     }
-    while(m_ptr1 < m_half){
+    while (m_ptr1 < m_half) {
         memcpy(buffer_ptr, m_ptr1, elsize);
         m_ptr1 += elsize;
         buffer_ptr += elsize;
     }
-    while(m_ptr2 < m_end){
+    while (m_ptr2 < m_end) {
         memcpy(buffer_ptr, m_ptr2, elsize);
         m_ptr2 += elsize;
         buffer_ptr += elsize;
