@@ -34,6 +34,7 @@ const char * const HELP_STRING = "Reads all lines from input file, sorts them an
 int main(int argc, const char* argv[]) {
     const char* filename = "input.txt";
 
+
     int arg_filename = parseArg(argc, argv, "--file");
     if ( (arg_filename != ARG_NOT_FOUND) && (arg_filename + 1 < argc)) {
         filename = argv[arg_filename + 1];
@@ -49,12 +50,13 @@ int main(int argc, const char* argv[]) {
         return 0;
     }
 
+
     int (*comparators[2][2] )(const void*, const void*) =
     {{sort_cmp_norm, sort_cmp_rtl    },
      {sort_cmp_inv , sort_cmp_inv_rtl}};
 
-    FILE* input = fopen (filename, "r");
 
+    FILE* input = fopen (filename, "r");
     if (input == nullptr) {
         fprintf(stderr, "File Not Found\n");
         return 0;
@@ -62,6 +64,7 @@ int main(int argc, const char* argv[]) {
 
     errno = 0;
     String file_content = readFile(input);
+    fclose(input);
     if (file_content.chars == nullptr) {
         perror("Error while reading file");
         return EXIT_FAILURE;
@@ -70,13 +73,11 @@ int main(int argc, const char* argv[]) {
     size_t line_count = 0;
     errno = 0;
     String* lines = split(file_content, &line_count, '\n');
-
     if (lines  == nullptr) {
         perror("Unexpected error");
         return EXIT_FAILURE;
     }
 
-    fclose(input);
 
     for (size_t i = 0; i < line_count; i++){
         if (shakespeare_mode){
@@ -99,6 +100,7 @@ int main(int argc, const char* argv[]) {
             printf("%s\n", lines[i].chars);
         }
     }
+
 
     free(file_content.chars);
     file_content.chars = nullptr;

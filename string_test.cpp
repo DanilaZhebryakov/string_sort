@@ -209,6 +209,6 @@ int main(){
     openAndCheckOnTestsFromFile(".\\test_files\\strcat_tests.txt", runStrcatTest);
     openAndCheckOnTestsFromFile(".\\test_files\\strcmp_tests.txt", runStrcmpTest);
     openAndCheckOnTestsFromFile(".\\test_files\\strchr_tests.txt", runStrchrTest);
-    openAndCheckOnTestsFromFile(".\\test_files\\split_tests.txt" , runSplitTest);
+    openAndCheckOnTestsFromFile(".\\test_files\\split_tests.txt" , runSplitTest );
 }
 
