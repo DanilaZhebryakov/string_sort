@@ -1,0 +1,4 @@
+ntests 3
+strcpy abacaba abcdef abcdef
+strcpy vasya petya petya
+strcpy a aboba aboba

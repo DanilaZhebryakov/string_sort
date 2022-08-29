@@ -1,0 +1,6 @@
+ntests 5
+strlen abc 3
+strlen vasya 5
+strlen abacaba 7
+strlen qwerty 6
+strlen привет 6

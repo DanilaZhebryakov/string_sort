@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1661694999 source:c:\users\danila\desktop\string_sort\string.cpp
+	<stdio.h>
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	"String.h"
+	"asserts.h"
+
+1661782288 c:\users\danila\desktop\string_sort\string.h
+
+1661696733 c:\users\danila\desktop\string_sort\asserts.h
+
+1661779679 source:c:\users\danila\desktop\string_sort\alt_string.cpp
+	<stdio.h>
+	"asserts.h"
+
+1661781916 source:c:\users\danila\desktop\string_sort\string_test.cpp
+	<stdio.h>
+	<string.h>
+	"alt_string.h"
+	"String.h"
+
+1661701403 c:\users\danila\desktop\string_sort\alt_string.h
+

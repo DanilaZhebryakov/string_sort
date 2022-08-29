@@ -6,7 +6,13 @@
 
 #include "file_read.h"
 #include "msort.h"
-#include "main.h"
+#include "sort_comp.h"
+
+
+const int ARG_NOT_FOUND = -1;
+
+int parseArg(int argc, const char* argv[], const char* arg_to_find);
+bool isEnterExit(const char* a);
 
 int sort_cmp_norm   ( const void* ap, const void* bp) { sortComp( Strcmp  ) }
 int sort_cmp_rtl    ( const void* ap, const void* bp) { sortComp( Strcmpe ) }
@@ -43,7 +49,6 @@ int main(int argc, const char* argv[]) {
         return 0;
     }
 
-
     int (*comparators[2][2] )(const void*, const void*) =
     {{sort_cmp_norm, sort_cmp_rtl    },
      {sort_cmp_inv , sort_cmp_inv_rtl}};
@@ -62,49 +67,55 @@ int main(int argc, const char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    int line_count = 0;
+    size_t line_count = 0;
     errno = 0;
     String* lines = split(file_content, &line_count, '\n');
+
     if (lines  == nullptr) {
         perror("Unexpected error");
         return EXIT_FAILURE;
     }
 
     fclose(input);
-    for (int i = 0; i < line_count; i++){
-        if (*(lines[i].chars) != ' ' && shakespeare_mode) {
-            *(lines[i].chars) = '\0';
-            lines[i].length = 0;
+
+    for (size_t i = 0; i < line_count; i++){
+        if (shakespeare_mode){
+            if(*(lines[i].chars) != ' ')
+                nullifyString(&lines[i]);
+
+            if(isEnterExit(lines[i].chars))
+                nullifyString(&lines[i]);
         }
 
-        if (remove_leading_spaces)
-        lstrip(&lines[i], ' ');
-
-        if (isEnterExit(lines[i].chars) && shakespeare_mode) {
-            *(lines[i].chars) = '\0';
-            lines[i].length = 0;
+        if (remove_leading_spaces) {
+            lstrip(&lines[i], ' ');
         }
     }
 
     msort(lines, line_count, sizeof(String), comparators[invert_sort_mode][right_to_left_mode] );
 
-    for (int i = 0; i < line_count; i++) {
+    for (size_t i = 0; i < line_count; i++) {
         if (lines[i].length != 0) {
             printf("%s\n", lines[i].chars);
         }
     }
 
     free(file_content.chars);
+    file_content.chars = nullptr;
+
     free(lines);
+    lines = nullptr;
+
     return 0;
 }
 
 int parseArg(int argc, const char* argv[], const char* arg_to_find) {
-    for (int x = 1; x < argc; x++) { //i
-        if (strcmp(argv[x], arg_to_find) == 0){
-            return x;
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], arg_to_find) == 0){
+            return i;
         }
     }
+
     return ARG_NOT_FOUND;
 }
 

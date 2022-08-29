@@ -1,0 +1,4 @@
+ntests 3
+strcmp aba aba 0
+strcmp aboba abuba -1
+strcmp abuba aboba 1

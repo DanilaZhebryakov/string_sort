@@ -1,0 +1,2 @@
+ntests 1
+split this_is_long_string S_ 4 this is long string

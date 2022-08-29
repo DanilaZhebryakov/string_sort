@@ -1,5 +1,5 @@
-#ifndef MAIN_H_INCLUDED
-#define MAIN_H_INCLUDED
+#ifndef SORT_COMP_H_INCLUDED
+#define SORT_COMP_H_INCLUDED
 
 #define sortComp(func) {                                \
     const String* a =  (const String*)ap;               \
@@ -13,10 +13,6 @@
     }                                                   \
 }
 
-const int ARG_NOT_FOUND = -1;
 
-int parseArg(int argc, const char* argv[], const char* arg_to_find);
 
-bool isEnterExit(const char* a);
-
-#endif // MAIN_H_INCLUDED
+#endif

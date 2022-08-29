@@ -9,7 +9,7 @@
 //! @return size
 //! @note returns 0 in case of error
 //! @note works incorrectly in some OSs because of different text format
-int getFileSize( FILE* file);
+size_t getFileSize( FILE* file);
 
 //! reads file as string
 //! @param [in] file input file

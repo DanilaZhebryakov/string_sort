@@ -1,0 +1,3 @@
+ntests 2
+strcat aba caba abacaba
+strcat qwe rty qwerty

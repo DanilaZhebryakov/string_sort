@@ -1,0 +1,4 @@
+ntests 3
+strchr qwerty Ce 2
+strchr qwerty Cs -1
+strchr abacaba Cb 1
