@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1661785933 source:c:\users\danila\desktop\string_sort\main.cpp
+1661844449 source:c:\users\danila\desktop\string_sort\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -33,7 +33,7 @@
 1661785802 c:\users\danila\desktop\string_sort\file_read.h
 	"String.h"
 
-1661785845 source:c:\users\danila\desktop\string_sort\file_read.cpp
+1661845160 source:c:\users\danila\desktop\string_sort\file_read.cpp
 	<stdio.h>
 	<stdlib.h>
 	<assert.h>
@@ -42,9 +42,9 @@
 	"file_read.h"
 	"asserts.h"
 
-1661785802 c:\users\danila\desktop\string_sort\string.h
+1661844472 c:\users\danila\desktop\string_sort\string.h
 
-1661785884 source:c:\users\danila\desktop\string_sort\string.cpp
+1661844417 source:c:\users\danila\desktop\string_sort\string.cpp
 	<stdio.h>
 	<errno.h>
 	<string.h>

@@ -11,7 +11,7 @@ struct String{
 };
 
 //! version of strcmp which compares strings right-to-left instead of left-to-right and uses String* as input
-int Strcmpe(const String* a, const String* b);
+int Strcmp_backw(const String* a, const String* b);
 
 //! version of strcmp which uses String* as input
 int Strcmp (const String* a, const String* b);

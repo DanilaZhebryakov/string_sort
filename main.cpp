@@ -14,10 +14,10 @@ const int ARG_NOT_FOUND = -1;
 int parseArg(int argc, const char* argv[], const char* arg_to_find);
 bool isEnterExit(const char* a);
 
-int sort_cmp_norm   ( const void* ap, const void* bp) { sortComp( Strcmp  ) }
-int sort_cmp_rtl    ( const void* ap, const void* bp) { sortComp( Strcmpe ) }
-int sort_cmp_inv    ( const void* ap, const void* bp) { sortComp(-Strcmp  ) }
-int sort_cmp_inv_rtl( const void* ap, const void* bp) { sortComp(-Strcmpe ) }
+int sort_cmp_norm     ( const void* ap, const void* bp) { sortComp( Strcmp       ) }
+int sort_cmp_backw    ( const void* ap, const void* bp) { sortComp( Strcmp_backw ) }
+int sort_cmp_inv      ( const void* ap, const void* bp) { sortComp(-Strcmp       ) }
+int sort_cmp_inv_backw( const void* ap, const void* bp) { sortComp(-Strcmp_backw ) }
 
 const char * const HELP_STRING = "Reads all lines from input file, sorts them and puts to standard output\n"
                                  "Options: \n"
@@ -33,7 +33,6 @@ const char * const HELP_STRING = "Reads all lines from input file, sorts them an
 
 int main(int argc, const char* argv[]) {
     const char* filename = "input.txt";
-
 
     int arg_filename = parseArg(argc, argv, "--file");
     if ( (arg_filename != ARG_NOT_FOUND) && (arg_filename + 1 < argc)) {
@@ -52,8 +51,8 @@ int main(int argc, const char* argv[]) {
 
 
     int (*comparators[2][2] )(const void*, const void*) =
-    {{sort_cmp_norm, sort_cmp_rtl    },
-     {sort_cmp_inv , sort_cmp_inv_rtl}};
+    {{sort_cmp_norm, sort_cmp_backw    },
+     {sort_cmp_inv , sort_cmp_inv_backw}};
 
 
     FILE* input = fopen (filename, "r");

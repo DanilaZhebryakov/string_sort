@@ -23,7 +23,7 @@ String readFile( FILE* file) {
     assert_ret(file_content != nullptr, ((String){nullptr, 0}));
     size_t fread_val = fread( file_content, sizeof(char), file_size, file);
     if (errno != 0){
-        fprintf(stderr,"Error: fread error \nFile:%s \nLine:%d \nFunc:%s\nExpected %ld chars ,got %ld. \nFunction returns nullptr\n",
+        fprintf(stderr,"Error: fread error \nFile:%s \nLine:%d \nFunc:%s\nExpected %Iu chars ,got %Iu. \nFunction returns nullptr\n",
                                             __FILE__,__LINE__, __PRETTY_FUNCTION__, file_size, fread_val);
         free(file_content);
         return {nullptr, 0};

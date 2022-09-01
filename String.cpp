@@ -10,7 +10,7 @@ int Strcmp(const String* a, const String* b) {
     return strcmp(a->chars, b->chars);
 }
 
-int Strcmpe(const String* a, const String* b) {
+int Strcmp_backw(const String* a, const String* b) {
     const char* a_ptr = a->chars + a->length;
     const char* b_ptr = b->chars + b->length;
     while (*a_ptr == *b_ptr && a_ptr >= a->chars && b_ptr >= b->chars){
